@@ -8,7 +8,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 ## Setting up the environment
 
-1. Create a KMS Customer managed keys, since it will not be used in a AWS service. Use this opportunity to explain the difference KMS options in the console.
+1. Create a KMS Customer managed keys, since it will not be used in a AWS service. Use this opportunity to explain the different KMS options in the console.
 
     KMS key creation parameters:
 
