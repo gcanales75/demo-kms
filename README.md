@@ -72,10 +72,10 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 1. Go to DynamoDB and explore the item in the table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
 
-1. Now you will retrieve the encrypted password from the **DynamosDB** table and decrypt it running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual **Key ID** you previously paste in a notepad (remove brackets `[]`).
+1. Now you will retrieve the encrypted password from the DynamoDB demo-kms table and decrypt it running a second python script which references the `appuser` value (Partition key). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the execution of the encryption script. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual Key ID you previously paste in a notepad (remove brackets `[]`).
 
     ```sh
-    python3 decrypt-passwd.py xxxxx [replace-me-with-the-kms-key-id]
+    python3 decrypt-passwd.py [replace-with-appuser-number] [replace-me-with-the-kms-key-id]
     ```
 
     You must see a similar output:
