@@ -76,3 +76,19 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 ### Highlights
 
 1. Customers could protect sensitive information such as PII or financial records, prior to being transmited to a storage service over a network (client-side encryption) using KMS encryption keys.
+
+### Clean up your account
+
+1. Go to the KMS and schedulule for deletion the KMS managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediatelly delete a KMS key.
+
+    > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key.) To prevent the use of a KMS key without deleting it, use DisableKey.
+
+    > Schedules the deletion of a KMS key. By default, KMS applies a waiting period of 30 days, but you can specify a waiting period of 7-30 days. When this operation is successful, the key state of the KMS key changes to PendingDeletion and the key can't be used in any cryptographic operations. It remains in this state for the duration of the waiting period. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the KMS key. After the waiting period ends, KMS deletes the KMS key, its key material, and all KMS data associated with it, including all aliases that refer to it.
+
+    Alternately you could run this command to schedule the key deletion:
+
+    ```sh
+    aws kms schedule-key-deletion --key-id replace-me-with-the-key-id --pending-window-in-days 7
+    ```
+
+1. Delete the DynamoDB table from the Web console or run from the cli: `aws dynamodb delete-table --table-name demo-kms`
