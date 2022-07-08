@@ -101,7 +101,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
     > Schedules the deletion of a KMS key. By default, KMS applies a waiting period of 30 days, but you can specify a waiting period of 7-30 days. When this operation is successful, the key state of the KMS key changes to PendingDeletion and the key can't be used in any cryptographic operations. It remains in this state for the duration of the waiting period. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the KMS key. After the waiting period ends, KMS deletes the KMS key, its key material, and all KMS data associated with it, including all aliases that refer to it.
 
-    Alternately you could run this command to schedule the key deletion:
+    Alternately you could run this `aws cli` command to schedule the key deletion:
 
     ```sh
     aws kms schedule-key-deletion --key-id replace-me-with-the-key-id --pending-window-in-days 7
