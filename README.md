@@ -85,7 +85,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 ### Clean up your account
 
-1. Go to the **KMS** and schedule for deletion the **KMS** managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediatelly delete a KMS key.
+1. Go to the **KMS** and schedule for deletion the **KMS** managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediately delete a KMS key.
 
     > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key.) To prevent the use of a KMS key without deleting it, use DisableKey.
 
