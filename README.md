@@ -30,9 +30,9 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
     DynamoDB table parameters:
 
-    - Table name: `demo-kms`
+    - Table name: `demo-kms` # Please do not change table name, the python scripts have dependencies on this table name.
 
-    - Partition key: `appuser`
+    - Partition key: `appuser` # Please do not change partition key id either, thank you.
 
     - Leave defaults and select **Create table**
 
