@@ -17,27 +17,31 @@ my_config = Config(
     }
 )
 
-## Start KMS boto3 client
 kms = boto3.client('kms', config=my_config)
-## Start DynamoDB boto3 client
 dynamodb = boto3.resource('dynamodb', config=my_config)
-## Set DynamoDB table name variable
 tableName = 'demo-kms'
-## Pass 'password' argument from the console to the py script
+
+## Add 'password' argument from the console to the py script as $passwd variable
 passwd=sys.argv[1]
+
+## Add 'KMS key' argument from the console to the py script as $kms_key_id variable
+kms_key_id=sys.argv[2]
+
 ## Create a random user
 user = random.choice(range(10001, 99999))
+
 ## Encrypt the password with the KMS key created referencing it with its alias
 encrypted = kms.encrypt(
-    KeyId='alias/demo-kms',
+    KeyId=kms_key_id,
     Plaintext=passwd,
     EncryptionAlgorithm='SYMMETRIC_DEFAULT'
 )
 encryptedpasswd = encrypted['CiphertextBlob']
+
 ## Put the encypted password as an item in the DynamoDB table just created
 table = dynamodb.Table(tableName)
 putItem = table.put_item(
-    Item={                                  ## <-- Encrypted password key/value
+    Item={
         'appuser': str(user),
         'userpasswd': encryptedpasswd  
     }

@@ -16,15 +16,18 @@ my_config = Config(
         'mode': 'standard'
     }
 )
-## Start KMS boto3 client
+
 kms = boto3.client('kms', config=my_config)
-## Start DynamoDB boto3 client
 dynamodb = boto3.client('dynamodb', config=my_config)
-## Set DynamoDB table name variable
 tableName = 'demo-kms'
+
 ## Pass 'user' argument from the console to the py script
 user = sys.argv[1]
-## Look for the encrypted password referencing the item 'key' (user)
+
+## Add 'KMS key' argument from the console to the py script as $kms_key_id variable
+kms_key_id=sys.argv[2]
+
+## Get the encrypted password referencing the item partition key (appuser)
 item = dynamodb.get_item(
     TableName=tableName,
     Key ={
@@ -34,18 +37,17 @@ item = dynamodb.get_item(
     },
     ProjectionExpression='userpasswd',
 )
+
 ## Parsing the encrypted password from the 'item' response
 encryptedpasswd = item['Item']['userpasswd']['B']
 
 ## Decrypt stored password
 decrypted = kms.decrypt(
     CiphertextBlob=encryptedpasswd,
-    KeyId='alias/demo-kms',
+    KeyId=kms_key_id,
     EncryptionAlgorithm='SYMMETRIC_DEFAULT'
 )
 decryptedpasswd = decrypted['Plaintext']
 decodedpasswd = decryptedpasswd.decode("utf-8")
 
 print('Is this your decrypted password? ->', decodedpasswd)
-#print(decrypted)
-# demo-no-decrypt Policy
