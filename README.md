@@ -18,9 +18,9 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
     - Alias: `demo-kms-append-with-random`
 
-    - Key administrator: your session IAM user
+    - Key administrator: *your session IAM user*
 
-    - Define key usage permissions: your session IAM user
+    - Define key usage permissions: *your session IAM user*
 
     - Review and select **Finish**
 
@@ -36,7 +36,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
     - Leave defaults and select **Create table**
 
-1. Open **CloudShell**
+1. Open **CloudShell** in a new browser tab.
 
 1. Download encrypt and decrypt python script files
 
@@ -62,9 +62,9 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
     > This command passes the password argument as a variable in the python script run, encrypts the password using a KMS data key and sends the protected password to the DynamoDB table with a `PutItem` action. The item uses a randomly generated `user` number as *Partition Key* value.
 
-1. Go to DynamoDB and explore the items in table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
+1. Go to **DynamoDB** and explore the items in table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
 
-1. You will retrieve the non encrypted password from the DynamosDB table running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual **Key ID** you previously paste in a notepad (remove brackets `[]`).
+1. Now you will retrieve the encrypted password from the **DynamosDB** table and decrypt it running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual **Key ID** you previously paste in a notepad (remove brackets `[]`).
 
     ```sh
     python3 decrypt-passwd.py xxxxx [replace-me-with-the-kms-key-id]
@@ -81,11 +81,11 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
 ### Highlight
 
-1. Customers can protect information such as PII or any sensitive data, prior to being transmited to a storage service over a network (client-side encryption) using KMS encryption keys embedding the `KMS SDK` in their applications code.
+1. Customers can protect information such as PII or any sensitive data, prior to being transmited to a storage service over a network (client-side encryption) using KMS encryption keys embedding the `KMS SDK` client in their applications code.
 
 ### Clean up your account
 
-1. Go to the KMS and schedulule for deletion the KMS managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediatelly delete a KMS key.
+1. Go to the KMS and schedule for deletion the KMS managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediatelly delete a KMS key.
 
     > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key.) To prevent the use of a KMS key without deleting it, use DisableKey.
 
@@ -97,6 +97,6 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
     aws kms schedule-key-deletion --key-id replace-me-with-the-key-id --pending-window-in-days 7
     ```
 
-1. Delete the DynamoDB table from the Web console or run from the cli: `aws dynamodb delete-table --table-name demo-kms`
+1. Delete the DynamoDB table from the Web console or run from `CloudShell`: `aws dynamodb delete-table --table-name demo-kms`
 
 ### END DEMO
