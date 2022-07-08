@@ -85,7 +85,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
     Is this your decrypted password? -> mySuperSecretPasswd
     ```
 
-    > This command passes the `user` argument as a variable in the decrypt python script run. The script first retrieves the encrypted password from the DynamoDB table with a `GetItem` action, passing the `user` number as *Partition key*, decrypt the encrypted password using the `KMS SDK` client and prints in console the operation response.
+    > This command passes the `appuser` and the **KMS** key id as arguments to the python script. The script then retrieves the encrypted password from the `demo-kms` DynamoDB table using the `GetItem` method of the SDK, passing the `appuser` Partition key. After the API responds, the script decrypts the encrypted password using the `KMS SDK` client and prints in the stdout the operation response.
 
 ### Highlight
 
@@ -93,7 +93,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 ### Clean up your account
 
-1. Go to the **KMS** and schedule for deletion the **KMS** managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediately delete a KMS key.
+1. Go to the **KMS** and schedule for deletion the **KMS** managed key used for this demo. Use this opportunity to understand why it is not allowed to immediately delete a **KMS** key.
 
     > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key.) To prevent the use of a KMS key without deleting it, use DisableKey.
 
