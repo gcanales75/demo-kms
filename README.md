@@ -99,4 +99,4 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
 1. Delete the DynamoDB table from the Web console or run from **CloudShell**: `aws dynamodb delete-table --table-name demo-kms`
 
-### END DEMO
+### END
