@@ -68,9 +68,9 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
     A new encrypted password for user: xxxxx has been stored in DynamoDB
     ```
 
-    > This command passes the password argument as a variable in the python script run, encrypts the password using a KMS data key and sends the protected password to the DynamoDB table with a `PutItem` action. The item uses a randomly generated `user` number as *Partition Key* value.
+    > This command passes the desired password as an argument to the python script. The script then encrypts this password using the KMS data key - also provided by you in argument list - and write the encrypted password to the `demo-kms` table using the `PutItem` method of DynamoDB SDK API. The script also generates a random number to save as the Partition Key value (appuser).
 
-1. Go to **DynamoDB** and explore the items in table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
+1. Go to DynamoDB and explore the item in the table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
 
 1. Now you will retrieve the encrypted password from the **DynamosDB** table and decrypt it running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual **Key ID** you previously paste in a notepad (remove brackets `[]`).
 
