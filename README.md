@@ -6,6 +6,8 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 ![diagram1](images/kms-demo.drawio.png)
 
+Default region: N. Virginia (us-east-1)
+
 ## Setting up the environment
 
 1. In AWS Console, go to KMS, choose Customer managed keys options in the left navigation menu and click on the **Create** key button.
@@ -70,7 +72,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
     > This command passes the desired password as an argument to the python script. The script then encrypts this password using the KMS data key - also provided by you in argument list - and write the encrypted password to the `demo-kms` table using the `PutItem` method of DynamoDB SDK API. The script also generates a random number to save as the Partition Key value (appuser).
 
-1. Go to DynamoDB and explore the item in the table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
+1. Go to **DynamoDB** and explore the item in the table `demo-kms`. You must see an item with the `appuser` value equal to the **CloudShell** stdout. You will also notice the `userpasswd` value is encrypted.
 
 1. Now you will retrieve the encrypted password from the DynamoDB demo-kms table and decrypt it running a second python script which references the `appuser` value (Partition key). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the execution of the encryption script. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual Key ID you previously paste in a notepad (remove brackets `[]`).
 
