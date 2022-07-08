@@ -24,6 +24,8 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
     - Review and select **Finish**
 
+    - Copy/paste the `Key ID` in a notepad, you will use it in the next steps.
+
 1. Create a DynamoDB table. This table will be used to store the user's encrypted password.
 
     DynamoDB table parameters:
@@ -46,10 +48,10 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 1. To encrypt a password *string* run the below command:
 
     ```sh
-    python3 encrypt-passwd.py mySuperSecretPasswd
+    python3 encrypt-passwd.py mySuperSecretPasswd [replace-me-with-the-kms-key-id]
     ```
 
-    You could replace `mySuperSecretPasswd` with a different password string
+    Replace `mySuperSecretPasswd` with a different password string and `replace-me-with-the-kms-key-id` with the actual **Key ID** you previously paste in a notepad in a previous step (remove brackets `[]`).
 
     You must see a similar output:
 
@@ -62,10 +64,10 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
 1. Go to DynamoDB and explore the items in table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
 
-1. You will retrieve the non encrypted password from the DynamosDB table running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run.
+1. You will retrieve the non encrypted password from the DynamosDB table running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run. Also replace the `replace-me-with-the-kms-key-id` placeholder with the actual **Key ID** you previously paste in a notepad (remove brackets `[]`).
 
     ```sh
-    python3 decrypt-passwd.py xxxxx
+    python3 decrypt-passwd.py xxxxx [replace-me-with-the-kms-key-id]
     ```
 
     You must see a similar output:
