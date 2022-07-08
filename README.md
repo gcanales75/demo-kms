@@ -85,7 +85,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
 ### Clean up your account
 
-1. Go to the KMS and schedule for deletion the KMS managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediatelly delete a KMS key.
+1. Go to the **KMS** and schedule for deletion the **KMS** managed key used for his demo. Use this opportunity to describe the logic of why it is not allowed to immediatelly delete a KMS key.
 
     > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key.) To prevent the use of a KMS key without deleting it, use DisableKey.
 
@@ -97,6 +97,6 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
     aws kms schedule-key-deletion --key-id replace-me-with-the-key-id --pending-window-in-days 7
     ```
 
-1. Delete the DynamoDB table from the Web console or run from `CloudShell`: `aws dynamodb delete-table --table-name demo-kms`
+1. Delete the DynamoDB table from the Web console or run from **CloudShell**: `aws dynamodb delete-table --table-name demo-kms`
 
 ### END DEMO
