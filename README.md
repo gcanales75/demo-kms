@@ -1,6 +1,6 @@
 # Security Best Practices - KMS Demo (boto3)
 
-In this demo you will demonstrate how to perform encrypt/decript operations on *strings* using AWS Key Management Service (KMS) and DynamoDB
+In this demo you will demonstrate how to perform encrypt/decript operations on *strings* using AWS Key Management Service (KMS) and DynamoDB `SDK` using a very simple scenario and running a couple of python (boto3) scripts.
 
 Diagram:
 
@@ -46,10 +46,12 @@ Diagram:
 1. To encrypt a password *string* run the below command:
 
     ```sh
-    python3 encrypt-passwd.py `mySuperSecretPasswd`
+    python3 encrypt-passwd.py mySuperSecretPasswd
     ```
 
-    You must see a similar output
+    You could replace `mySuperSecretPasswd` with a different password string
+
+    You must see a similar output:
 
     ```sh
     -->> Encrypting your very secret password
@@ -62,4 +64,11 @@ Diagram:
 
     ```sh
     python3 decrypt-passwd.py xxxxx
+    ```
+
+    You must see a similar output:
+
+    ```sh
+    -->> Decrypting the very secret password for user: xxxxx
+    Is this your decrypted password? -> mySuperSecretPasswd
     ```
