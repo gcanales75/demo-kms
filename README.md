@@ -1,6 +1,6 @@
 # Security Best Practices - KMS Demo
 
-In this demo you will demonstrate how to perform client-side encrypt/decript operations on *strings* using `AWS SDK` in a very simple scenario and running a couple of python (boto3) scripts.
+In this demo you will demonstrate how to perform client-side encrypt/decript operations on *strings* using `KMS SDK` client in a very simple scenario and running a couple of python (boto3) scripts.
 
 *Diagram:*
 
@@ -16,7 +16,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
 
     - Key usage: Encrypt and decrypt
 
-    - Alias: `demo-kms`
+    - Alias: `demo-kms-append-with-random`
 
     - Key administrator: your session IAM user
 
@@ -58,9 +58,11 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
     A new encrypted password for user: xxxxx has been stored in DynamoDB
     ```
 
-1. Go to DynamoDB and explore the items in table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is the encrypted.
+    > This command passes the password argument as a variable in the python script run, encrypts the password using a KMS data key and sends the protected password to the DynamoDB table with a `PutItem` action. The item uses a randomly generated `user` number as *Partition Key* value.
 
-1. You now will retrieve the unscrypted password from the DynamosDB table running a second python script which references the `user` number. Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run.
+1. Go to DynamoDB and explore the items in table `demo-kms`. You must see an item with the user number similar to the CloudShell stdout. You will also notice the `userpasswd` value is encrypted.
+
+1. You will retrieve the non encrypted password from the DynamosDB table running a second python script which references the `user` number (*Partition key*). Run the below command replacing the `user` placeholder with the actual `user` number displayed after the encryption file run.
 
     ```sh
     python3 decrypt-passwd.py xxxxx
@@ -73,9 +75,11 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
     Is this your decrypted password? -> mySuperSecretPasswd
     ```
 
-### Highlights
+    > This command passes the `user` argument as a variable in the decrypt python script run. The script first retrieves the encrypted password from the DynamoDB table with a `GetItem` action, passing the `user` number as *Partition key*, decrypt the encrypted password using the `KMS SDK` client and prints in console the operation response.
 
-1. Customers could protect sensitive information such as PII or financial records, prior to being transmited to a storage service over a network (client-side encryption) using KMS encryption keys.
+### Highlight
+
+1. Customers can protect information such as PII or any sensitive data, prior to being transmited to a storage service over a network (client-side encryption) using KMS encryption keys embedding the `KMS SDK` in their applications code.
 
 ### Clean up your account
 
@@ -92,3 +96,5 @@ In this demo you will demonstrate how to perform client-side encrypt/decript ope
     ```
 
 1. Delete the DynamoDB table from the Web console or run from the cli: `aws dynamodb delete-table --table-name demo-kms`
+
+### END DEMO
