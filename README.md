@@ -1,6 +1,6 @@
-# Security Best Practices - KMS Demo (boto3)
+# Security Best Practices - KMS Demo
 
-In this demo you will demonstrate how to perform encrypt/decript operations on *strings* using `AWS SDK` in a very simple scenario and running a couple of python (boto3) scripts.
+In this demo you will demonstrate how to perform client-side encrypt/decript operations on *strings* using `AWS SDK` in a very simple scenario and running a couple of python (boto3) scripts.
 
 *Diagram:*
 
