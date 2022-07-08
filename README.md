@@ -48,10 +48,8 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 1. Prior to running the scripts, you can display their content on screen and explain them to the class
 
     ```sh
-    vi encrypt-passwd.py
+    cat encrypt-passwd.py
     ````
-
-    To exit the `vi` editor type `:q!`
 
     Repeat with the decrypt script file.
 
