@@ -1,6 +1,6 @@
 # Security Best Practices - KMS Demo
 
-In this demo you will demonstrate how to perform client-side encrypt/decrypt operations on *strings* using `KMS SDK` client in a very simple scenario and running a couple of python (boto3) scripts.
+In this demo you will demonstrate how to perform client-side encrypt/decrypt operations on *strings* using `KMS SDK` client in a very simple scenario and running a couple of python scripts using the boto3 SDK.
 
 *Diagram:*
 
@@ -8,7 +8,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 ## Setting up the environment
 
-1. Create a KMS Customer managed keys, since it will not be used in a AWS service. Use this opportunity to explain the different KMS options in the console.
+1. In AWS Console, go to KMS, choose Customer managed keys options in the left navigation menu and click on the **Create** key button.
 
     KMS key creation parameters:
 
