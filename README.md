@@ -95,7 +95,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
 
 1. Go to the **KMS** and schedule for deletion the **KMS** managed key used for this demo. Use this opportunity to understand why it is not allowed to immediately delete a **KMS** key.
 
-    > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key.) To prevent the use of a KMS key without deleting it, use DisableKey.
+    > Deleting a KMS key is a destructive and potentially dangerous operation. When a KMS key is deleted, all data that was encrypted under the KMS key is unrecoverable. (The only exception is a multi-Region replica key). To prevent the usage of a KMS key without deleting it, you can just disable it using the DisableKey option.
 
     > Schedules the deletion of a KMS key. By default, KMS applies a waiting period of 30 days, but you can specify a waiting period of 7-30 days. When this operation is successful, the key state of the KMS key changes to PendingDeletion and the key can't be used in any cryptographic operations. It remains in this state for the duration of the waiting period. Before the waiting period ends, you can use CancelKeyDeletion to cancel the deletion of the KMS key. After the waiting period ends, KMS deletes the KMS key, its key material, and all KMS data associated with it, including all aliases that refer to it.
 
