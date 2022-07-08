@@ -45,7 +45,7 @@ In this demo you will demonstrate how to perform client-side encrypt/decrypt ope
     curl -o encrypt-passwd.py https://raw.githubusercontent.com/gcanales75/demo-kms/main/encrypt-passwd.py
     ```
 
-1. Prior to running the scripts, you can display them on screen and explain them to the class
+1. Prior to running the scripts, you can display their content on screen and explain them to the class
 
     ```sh
     vi encrypt-passwd.py
