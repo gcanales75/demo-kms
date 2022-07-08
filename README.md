@@ -1,6 +1,6 @@
 # Security Best Practices - KMS Demo
 
-In this demo you will demonstrate how to perform client-side encrypt/decript operations on *strings* using `KMS SDK` client in a very simple scenario and running a couple of python (boto3) scripts.
+In this demo you will demonstrate how to perform client-side encrypt/decrypt operations on *strings* using `KMS SDK` client in a very simple scenario and running a couple of python (boto3) scripts.
 
 *Diagram:*
 
